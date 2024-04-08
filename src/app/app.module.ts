@@ -1,4 +1,4 @@
-/**
+/*
  * @license
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
@@ -12,6 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
+ 
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
@@ -23,6 +24,10 @@ import {
 import { GraphQLModule } from './graphql.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { ApolloModule } from 'apollo-angular';
+import { ProjectsModule } from './pages/projects/projects.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { TasksModule } from './pages/tasks/tasks.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,9 +49,19 @@ import { ApolloModule } from 'apollo-angular';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     AuthModule,
-    ApolloModule
+    ProjectsModule,
+    TasksModule,
+    ApolloModule,
+    NbDialogModule.forRoot(),
+    ReactiveFormsModule,
+ 
+   
+
+    
+  
   ],
   bootstrap: [AppComponent],
+ 
 })
 export class AppModule {
 }

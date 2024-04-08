@@ -1,0 +1,33 @@
+<div class="col-lg-12 ">
+    <form [formGroup]="newFileForm">
+
+        <nb-card>
+            <nb-card-body class="example-items-col">
+
+                
+                <input class="input" type="text" formControlName="fileName" nbInput fullWidth placeholder="file_name"
+                style="margin-bottom: 20px;">
+
+                <input class="input" type="date" formControlName="date" nbInput fullWidth placeholder="date"
+                    style="margin-bottom: 20px;">
+
+                <input class="input" type="text" formControlName="object" nbInput fullWidth placeholder="object"
+                    style="margin-bottom: 20px;">
+                    <input class="input" type="text" formControlName="keyWords" nbInput fullWidth placeholder="key words"
+                    style="margin-bottom: 20px;">
+
+                <input class="input" multiple (change)="onFilechange($event)" formControlName="file" type="file" style="margin-bottom: 20px;"
+                    nbInput fullWidth>
+
+
+                    <button class="input" nbButton shape="semi-round" status="primary" nbButton fullWidth
+                    style="margin-bottom: 20px;"  (click)="uploadFile()">upload</button>
+
+
+
+            </nb-card-body>
+        </nb-card>
+    </form>
+
+
+</div>

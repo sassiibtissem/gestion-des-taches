@@ -9,6 +9,9 @@ import {
   NbResetPasswordComponent,
 } from "@nebular/auth";
 import { LoginComponent } from "./pages/auth/login/login.component";
+import { canActivate } from "./pages/auth/Guard/auth.guard";
+import { CreateUserComponent } from "./pages/auth/create-user/create-user.component";
+//import { AuthGuard } from "./pages/auth/Guard/auth.guard";
 
 export const routes: Routes = [
   {
@@ -19,20 +22,27 @@ export const routes: Routes = [
   {
     path: "auth",
     component: NbAuthComponent,
+
     children: [
       {
         path: "",
+
         component: LoginComponent,
       },
       {
         path: "login",
         component: LoginComponent,
+        // canActivate:[canActivate] // utilisation d auth guard
       },
       {
         path: "register",
         component: NbRegisterComponent,
       },
       {
+      //   path: "createUser",
+      //   component: CreateUserComponent,
+      // },
+      
         path: "logout",
         component: NbLogoutComponent,
       },

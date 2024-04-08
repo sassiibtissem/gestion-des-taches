@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Apollo, APOLLO_OPTIONS } from "apollo-angular";
+import {  APOLLO_OPTIONS } from "apollo-angular";
 import { HttpLink } from "apollo-angular/http";
 import { InMemoryCache, ApolloLink } from "@apollo/client/core";
 import { setContext } from "@apollo/client/link/context";

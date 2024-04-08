@@ -1,0 +1,12 @@
+<!-- <div [ngClass]="{'no-file-row': !rowData}"> -->
+    <!-- <ng-container *ngIf="rowData.file; else noFileContent"> -->
+        <!-- <a href="http://localhost:3000/docs/{{rowData.file}}" target="_blank"><i class="nb-edit">{{ rowData.file  }}</i></a> -->
+        <button routerLink="/documents" (click)="toggleTreeGrid()" nbButton shape="semi-round" status="primary" nbButton smallWidth>  <i class="fas fa-file-pdf"></i>
+            <app-documents-tree-grid *ngIf="showDocumentsTreeGrid" ></app-documents-tree-grid>
+        
+        </button>
+    <!-- </ng-container> -->
+    <ng-template #noFileContent>
+        <span>No file available</span>
+</ng-template> 
+<!-- </div>  -->

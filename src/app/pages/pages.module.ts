@@ -7,6 +7,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+import { AuthModule } from './auth/auth.module';
+
+
 
 @NgModule({
   imports: [
@@ -16,9 +19,13 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
+    AuthModule
   ],
   declarations: [
-    PagesComponent,
+    PagesComponent
+    
+  
+ 
   ],
 })
 export class PagesModule {

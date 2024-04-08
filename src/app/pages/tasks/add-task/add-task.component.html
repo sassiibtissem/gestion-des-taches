@@ -1,0 +1,48 @@
+<div class="col-lg-10">
+  <form [formGroup]="newTaskForm">
+    <nb-card>
+      <nb-card-body class="grid">
+
+
+
+        <nb-select class="input" formControlName="projectId" fullWidth placeholder="project_name"
+          style="margin-bottom: 20px;">
+          <nb-option *ngFor="let p of projects" [value]="p._id">{{ p.projectName }}</nb-option>
+        </nb-select>
+
+
+        <div>
+          <input class="input" type="text" formControlName="task_name" nbInput fullWidth placeholder="task_name">
+
+        </div>
+
+
+        <input class="input" type="text" formControlName="description" nbInput fullWidth placeholder="description">
+
+
+
+        <!-- Date Picker for Start Date -->
+        <input nbInput fullWidth placeholder="Start Date" formControlName="start_date" [nbDatepicker]="startPicker" style="margin-bottom: 20px;">
+        <nb-datepicker #startPicker></nb-datepicker>
+
+        <input class="input" type="text" formControlName="estimation_time" nbInput fullWidth
+          placeholder="estimation_time">
+        <nb-select class="input" formControlName="developerId" fullWidth placeholder="developer_name">
+          <nb-option *ngFor="let u of user" [value]="u._id">{{u.firstName}}**{{u.lastName}}</nb-option>
+        </nb-select>
+
+
+
+
+        <input class="input" type="text" formControlName="state" nbInput fullWidth placeholder="state">
+        <input class="input" (change)="onFilechange($event)" nbInput fullWidth  type="file" style="margin-bottom: 20px;">
+        <!-- <button (click)="upload()" type="button" class="btn btn-primary mt-3">Upload</button> -->
+
+      
+
+
+        <button nbButton shape="semi-round" status="primary" nbButton fullWidth (click)=" createTask()">create</button>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>

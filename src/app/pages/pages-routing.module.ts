@@ -5,10 +5,14 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { canActivate } from './auth/Guard/auth.guard';
+;
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
+  canActivate: [canActivate],
+  data:['chef_projet',"developpeur",'manager'],// les rôles exisistant dans la db
   children: [
     {
       path: 'dashboard',
@@ -37,6 +41,26 @@ loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)
       path: 'ui-features',
       loadChildren: () => import('./ui-features/ui-features.module')
         .then(m => m.UiFeaturesModule),
+    },
+    {
+      path: 'project',
+      loadChildren: () => import('./projects/projects.module')
+        .then(m => m.ProjectsModule),
+    },
+    {
+      path:'createUser',
+      loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    },
+   
+    {
+      path: 'task',
+      loadChildren: () => import('./tasks/tasks.module')
+        .then(m => m.TasksModule),
+    },
+    {
+      path: 'listToDo',
+      loadChildren: () => import('./tasks/tasks.module')
+        .then(m => m.TasksModule),
     },
     {
       path: 'modal-overlays',

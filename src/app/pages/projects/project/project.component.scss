@@ -1,0 +1,17 @@
+
+.flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: baseline;
+	align-content: flex-end;
+}
+.no-file-row {
+	background-color: red;
+	color: white; /* Adjust text color for better visibility */
+  }
+  
+.red-row {
+  background-color: red; // Set the background color to red for rows without a file
+}

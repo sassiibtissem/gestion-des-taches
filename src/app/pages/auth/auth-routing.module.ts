@@ -1,8 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
+import { CreateUserComponent } from "./create-user/create-user.component";
 
-export const routes: Routes = [
+
+export const routes: Routes = [{
+  path :'createUser',
+  component:CreateUserComponent
+}
   //par securité si je ne met rien de tout je fais faire une redirection sur login avec
   //une correspondance parfaite au niveau de mes url.
   // { path :'', redirectTo:'login' , pathMatch:'full'},
@@ -15,7 +19,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports:[RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class AuthRoutingModule {}

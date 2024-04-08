@@ -1,0 +1,46 @@
+<!-- add-project.component.html -->
+<div class="col-lg-12 ">
+  <form [formGroup]="newProjectForm">
+    <nb-card>
+      <nb-card-body class="example-items-col">
+
+        <div>
+
+          <input class="input" type="text" formControlName="projectName" nbInput fullWidth placeholder="project_name"
+            style="margin-bottom: 20px;">
+        </div>
+
+        <input class="input" type="text" formControlName="subject" nbInput fullWidth placeholder="Subject"
+          style="margin-bottom: 20px;">
+
+        <input class="input" type="text" formControlName="description" nbInput fullWidth placeholder="description"
+          style="margin-bottom: 20px;">
+
+        <nb-select class="input" formControlName="userId" fullWidth placeholder="project_leader_name"
+          style="margin-bottom: 20px;">
+
+          <nb-option *ngFor="let u of user" [value]="u._id">{{u.firstName}}**{{u.lastName}}</nb-option>
+
+        </nb-select>
+
+        <!-- Date Picker for Start Date -->
+        <input nbInput fullWidth placeholder="Start Date" formControlName="start_date" [nbDatepicker]="startPicker"
+          style="margin-bottom: 20px;">
+        <nb-datepicker #startPicker></nb-datepicker>
+
+        <!-- Date Picker for End Date -->
+        <input nbInput fullWidth placeholder="End Date" formControlName="end_date" [nbDatepicker]="endPicker"
+          style="margin-bottom: 20px;">
+        <nb-datepicker #endPicker></nb-datepicker>
+        <button class="input" nbButton shape="semi-round" status="primary" nbButton fullWidth
+        style="margin-bottom: 20px;" (click)="createProject()">create</button>
+        <button class="input" nbButton shape="semi-round" status="success" nbButton 
+        style="margin-bottom: 20px;" nbInput *ngIf="true"
+        [disabled]="projectCreated" (click)="uploadDocuments()">
+          Upload Documents
+        </button>
+       
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>

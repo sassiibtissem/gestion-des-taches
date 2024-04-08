@@ -9,12 +9,17 @@ import {
   NbCardModule,
   NbCheckboxModule,
   NbInputModule,
+  NbRadioModule,
+  NbSelectModule,
 } from "@nebular/theme";
 import { NbAuthModule } from "@nebular/auth";
 import { LoginService } from "../../@core/mock/auth.service";
+import { CreateUserComponent } from "./create-user/create-user.component";
+import { AuthRoutingModule } from "./auth-routing.module";
+
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent,CreateUserComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,6 +31,13 @@ import { LoginService } from "../../@core/mock/auth.service";
     NbAuthModule,
     NbCardModule,
     ReactiveFormsModule,
+    NbSelectModule,
+    NbRadioModule,
+    AuthRoutingModule,
+    NbAlertModule
+    
+    
+   
   ],
   providers: [LoginService],
 })

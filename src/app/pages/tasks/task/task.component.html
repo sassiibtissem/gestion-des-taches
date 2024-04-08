@@ -1,0 +1,19 @@
+<nb-card>
+    <nb-card-header class="flex" >
+      <button    nbButton hero status="primary" (click)="addTaskDialog()" >add Tasks</button>
+      <button nbButton hero status="primary" >configuration </button>
+       
+         
+        
+      
+         
+       
+      
+    </nb-card-header>
+  
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="tasks" (editConfirm)="onEditConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)"  >
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+  

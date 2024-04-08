@@ -1,0 +1,146 @@
+<nb-card>
+  <nb-card-header class="flex">
+    <nb-select class="input" fullWidth placeholder="project_name" style="margin-bottom: 20px;"
+      (selectedChange)="changeProject($event)">
+      <nb-option *ngFor="let p of projects" [value]="p._id">{{p.projectName}} </nb-option>
+    </nb-select>
+
+  </nb-card-header>
+  <nb-card-body>
+
+    <div *ngIf=" tasks && tasks.length !=0" class="kanban-container">
+
+      <div class="column">
+        <div class="column-header"> To Do</div>
+        <div class="card" *ngFor="let item of filterTickets('to do')" draggable="true" (dragstart)="onDragStart(item)">
+
+          <div> <strong>Description:</strong>{{item.description}}</div>
+          <nb-select class="input" size="tiny" filled state="success" style="margin-top: 20px;"
+            placeholder="developer_name">
+            <nb-option *ngFor="let u of user" [value]="u.firstName + ' ' + u.lastName">{{ u.firstName }} {{ u.lastName
+              }}</nb-option>
+          </nb-select>
+        </div>
+
+      </div>
+      <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'In Progress')">
+        <div class="column-header"> In Progress</div>
+        <div class="card" *ngFor="let item of filterTickets('In Progress')" draggable="true"
+          (dragstart)="onDragStart(item)">
+          <div> <strong>Description:</strong>{{item.description}}</div>
+
+
+          <!-- Move select inside the card -->
+          <nb-select class="input" size="tiny" filled state="success" style="margin-top: 20px;"
+            placeholder="developer_name">
+            <nb-option *ngFor="let u of user" [value]="u.firstName + ' ' + u.lastName">{{ u.firstName }} {{ u.lastName
+              }}</nb-option>
+          </nb-select>
+
+
+
+        </div>
+
+      </div>
+
+
+      <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'done')">
+        <div class="column-header"> Done </div>
+        <div class="card" *ngFor="let item of filterTickets('done')" draggable="true" (dragstart)="onDragStart(item)">
+          <div> <strong>Description:</strong>{{item.description}}</div>
+          <!-- Move select inside the card -->
+          <nb-select class="input" size="tiny" filled state="success" style="margin-top: 20px;"
+            placeholder="developer_name">
+            <nb-option *ngFor="let u of user" [value]="u.firstName + ' ' + u.lastName">{{ u.firstName }} {{
+              u.lastName
+              }}</nb-option>
+          </nb-select>
+
+        </div>
+
+      </div>
+      <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'stand by')">
+        <div class="column-header column-standBy"> Stand By </div>
+        <div class="card" *ngFor="let item of filterTickets('stand by')" draggable="true"
+          (dragstart)="onDragStart(item)">
+          <div> <strong>Description:</strong>{{item.description}}</div>
+
+
+
+          <!-- Move select inside the card -->
+          <nb-select class="input" size="tiny" filled state="success" style="margin-top: 20px;"
+          placeholder="developer_name">
+          <nb-option *ngFor="let u of user" [value]="u.firstName + ' ' + u.lastName">{{ u.firstName }} {{
+            u.lastName
+            }}</nb-option>
+        </nb-select>
+
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanban Board</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .board {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .column {
+        flex: 1;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0 10px;
+    }
+    .column h2 {
+        margin-top: 0;
+    }
+    .card {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="board">
+    <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'to do')">
+        <h2>To Do</h2>
+      
+        <div class="card" draggable="true" *ngFor="let item of filterTickets('to do')" (dragstart)="onDragStart(item)">{{item.ticketId}}</div>
+      
+    </div>
+    <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'in progress')">
+        <h2>In Progress</h2>
+        <div class="card" draggable="true" *ngFor="let item of filterTickets('in progress')"  (dragstart)="onDragStart(item)">{{item.ticketId}}</div>
+        
+    </div>
+    <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'done')">
+        <h2>Done</h2>
+        <div class="card"draggable="true" *ngFor="let item of filterTickets('done')"  (dragstart)="onDragStart(item)">{{item.ticketId}}</div>
+        
+    </div>
+</div>
+
+</body>
+</html> -->

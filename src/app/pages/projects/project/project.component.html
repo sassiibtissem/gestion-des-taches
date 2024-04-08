@@ -1,0 +1,25 @@
+<nb-card>
+  
+    <nb-card-header class="flex">
+     
+      
+       
+          <button  nbButton hero status="primary" (click)="addProjectDialog()">add Project</button>
+        
+        
+          
+        
+      
+        
+    </nb-card-header>
+
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="projects" (editConfirm)="onEditConfirm($event)"
+        (deleteConfirm)="onDeleteConfirm($event)"    (saveConfirm)="onSaveConfirm($event)"    >
+        <button nbButton hero status="success">add</button>
+      </ng2-smart-table>    
+    </nb-card-body>
+    
+    
+  </nb-card>
+  
