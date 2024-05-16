@@ -10,12 +10,14 @@ import { Ng2SmartTableModule } from "ng2-smart-table";
 import { TasksRoutingModule } from "./tasks-routing.module";
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ListToDoComponent } from './list-to-do/list-to-do.component';
+import { ToDoComponent } from './to-do/to-do.component';
 
 @NgModule({
     declarations:[
         TaskComponent,
         AddTaskComponent,
-        ListToDoComponent
+        ListToDoComponent,
+        ToDoComponent
     ],
     imports:[
         CommonModule,

@@ -24,24 +24,26 @@ export class ProjectService {
           userId
           start_date
           end_date
-          file
         }
       }
     `;
   }
-    getFileUrl(formData) {
-      return this.apollo.query({
-        query: gql`
-          query GetFileUrl($fileName: String!) {
-            getFileUrl(fileName: $fileName)
-          }
-        `,
-        variables: {
-          fileName: formData
-        }
-      });
-    }
-  
+
+  getFile(projectId: any) {
+    return gql`
+    query{
+      getAllFilesByProject(
+       projectId:"${projectId}") {
+        fileName
+        date
+        object
+        keyWords
+      
+      
+      
+      }
+    }`}
+
   // getUser selon project
   getAllUsers() {
     return gql`
@@ -55,7 +57,7 @@ export class ProjectService {
     `;
   }
   //create project
-  createProject(newProjectData: any,file) {
+  createProject(newProjectData: any) {
     return gql`
       mutation {
         createProject(createProjectInput: {
@@ -65,7 +67,7 @@ export class ProjectService {
           userId: "${newProjectData.userId}"
           start_date: "${newProjectData.start_date}"
           end_date: "${newProjectData.end_date}"
-          file: "${file}"
+        
         }) {
           _id
           projectName
@@ -74,13 +76,13 @@ export class ProjectService {
           leader_name
           start_date
           end_date
-          file
+         
         }
       }
     `;
   }
   // upload File
-  uploadFile(newFileData: any,file) {
+  uploadFile(newFileData: any, file) {
     return gql`
       mutation {
         createFile(createFileInput: {
@@ -91,7 +93,7 @@ export class ProjectService {
           projectId:"${newFileData.projectId}"
           file: "${file}"
         }) {
-          _id
+         
           fileName
           object
           date
@@ -128,21 +130,81 @@ export class ProjectService {
       
   `;
   }
+ 
 
-  removeProject(_id: string) {
-    return gql`
-      mutation {
-        removeProject(_id: "${_id}") {
-          projectName
-          subject
-          description
-          leader_name
-          start_date
-          end_date
-        }
+  // removeProject(_id: string) {
+  //   return gql`
+  //     mutation {
+  //       removeProject(_id: "${_id}") {
+  //         projectName
+  //         subject
+  //         description
+  //         leader_name
+  //         start_date
+  //         end_date
+  //       }
+  //     }
+  //   `;
+  // }
+// Define the mutation for deleting tasks and users related to a project
+removeProject(id: string) {
+  return this.apollo.mutate<any>({
+    mutation: gql`
+      mutation RemoveProject($id: String!) {
+        removeProject(_id: $id)
       }
-    `;
+    `,
+    variables: {
+      id
+    }
+  }).toPromise();
+}
+  // Query to check if project has related items
+  checkRelatedItems(projectId: string) {
+    return this.apollo.query<any>({query :gql`
+      query {
+        hasRelatedItems(projectId: "${projectId}")
+      }
+    `})}
+
+deleteRelatedItems(projectId: string) {
+  return this.apollo.mutate<any>({
+    mutation: gql`
+      mutation DeleteRelatedItems($projectId: String!) {
+        deleteRelatedItems(projectId: $projectId)
+      }
+    `,
+    variables: {
+      projectId
+    }
+  }).toPromise();
+
+}
+ 
+  //getFileByProject
+  getAllFilesByProject(projectId: string) {
+    return this.apollo.query<any>({
+      query: gql`
+        query {
+          getAllFilesByProject(projectId: "${projectId}") {
+            
+            fileName: 
+            object
+            date
+            subject
+            description
+            projectName
+            start_date
+            userId
+            end_date
+            leader_name
+  
+          }
+        }
+      `,
+    });
   }
+  
 
   getUserByProject() {
     return gql`
@@ -155,7 +217,6 @@ export class ProjectService {
           subject
           start_date
           end_date
-          file
         }
       }
     `;

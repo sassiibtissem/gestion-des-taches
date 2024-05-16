@@ -22,6 +22,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon:'message-circle-outline',
     link: '/pages/task/list-to-do',
   },
+  {
+    title: 'to-do',
+    icon:'edit-2-outline',
+    link: '/pages/task/to-do',
+  },
   
   // {
   //   title: 'FEATURES',

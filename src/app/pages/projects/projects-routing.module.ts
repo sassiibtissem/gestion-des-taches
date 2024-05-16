@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ProjectComponent } from "./project/project.component";
 import { AddProjectComponent } from "./add-project/add-project.component";
+import { ListFilesComponent } from "./list-files/list-files.component";
 
 
 export const routes :Routes=[{
@@ -9,7 +10,11 @@ export const routes :Routes=[{
     component:ProjectComponent
 },
 { path:'add-project',
-component:AddProjectComponent}
+component:AddProjectComponent},
+{
+  path:'documents',
+  component:ListFilesComponent
+},
 ]
 
 @NgModule({

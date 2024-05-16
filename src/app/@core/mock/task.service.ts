@@ -45,18 +45,13 @@ export class TaskService {
   removeTask(_id) {
     return gql`
     mutation {
-      removeTask(_id:"${_id}") {
-    
-    task_name
-    projectName
-     description
-      developer_name
-      start_date
-      estimation_time
-      state
-      }
+      deleteRelatedTasks(projectId:"${_id}")
     }
     `;
+  }
+  //delete related tasks
+  deleteRelatedTasks(_id){
+
   }
   // update task//
   edit(newData: any) {
@@ -85,7 +80,7 @@ export class TaskService {
      
       }}
     `;
-    }
+  }
   getTasksByProject() {
     return gql`
       query {
@@ -114,24 +109,19 @@ export class TaskService {
   }
   getTasks() {
     return gql`
-    query {
-      getTasks {
-       projectId
-       developerId
-       projectName
-       task_name
-       description
-       developer_name
-       start_date
-       estimation_time
-       state
-       
-     
-     
-      
-        
-       }
-     }
+      query {
+        getTasks {
+          projectId
+          developerId
+          projectName
+          task_name
+          description
+          developer_name
+          start_date
+          estimation_time
+          state
+        }
+      }
     `;
   }
   getTasksToProject() {
@@ -148,20 +138,18 @@ export class TaskService {
   // get developer
   getAllUsers() {
     return gql`
-   query{ 
-    getDevelopers{
-      _id
-    firstName,
-      lastName
-      
-      
-      
-     }
-  }`;
+      query {
+        getDevelopers {
+          _id
+          firstName
+          lastName
+        }
+      }
+    `;
   }
   //get tasks to project By state
-getTasksToprojectBystate(id){
-  return gql`
+  getTasksToprojectBystate(id) {
+    return gql`
   query{getTasksByProject(projectId:"${id}"){
     _id,
     tasks{projectId,description,state,estimation_time}
@@ -169,23 +157,28 @@ getTasksToprojectBystate(id){
   
   
   
-  `
-}
-
-getAllTasksToproject(id){
-  return gql`
-  query
-{getTasksToProject(projectId:"${id}")
-{
-  id
-  description,
-  task_name,
-  state
+  `;
   }
-} `
-}
-upDateTaskState(id,state){
-  return gql`
+
+  getAllTasksToproject(id) {
+    return gql`
+  query
+      {getTasksToProject(projectId:"${id}")
+       {
+          projectId
+          developerId
+          developer_name
+          projectName
+          task_name
+          description
+          start_date
+          estimation_time
+          state
+  }
+} `;
+  }
+  upDateTaskState(id, state) {
+    return gql`
   mutation {
     updateTaskState(taskId:"${id}", newState: "${state}"){
       id
@@ -193,9 +186,6 @@ upDateTaskState(id,state){
       task_name
       state
     }
-  }`
-}
-
-
-
+  }`;
+  }
 }

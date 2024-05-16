@@ -1,12 +1,41 @@
-<!-- <div [ngClass]="{'no-file-row': !rowData}"> -->
-    <!-- <ng-container *ngIf="rowData.file; else noFileContent"> -->
-        <!-- <a href="http://localhost:3000/docs/{{rowData.file}}" target="_blank"><i class="nb-edit">{{ rowData.file  }}</i></a> -->
-        <button routerLink="/documents" (click)="toggleTreeGrid()" nbButton shape="semi-round" status="primary" nbButton smallWidth>  <i class="fas fa-file-pdf"></i>
-            <app-documents-tree-grid *ngIf="showDocumentsTreeGrid" ></app-documents-tree-grid>
+<!-- <div [ngClass]="{'no-file-row': !projectFile}">     -->
+<!-- <ng-container *ngIf="data.file; else noFileContent">  -->
+<!-- <a href="http://localhost:3000/docs/{{data.projectFile}}" target="_blank"><i class="nb-edit">{{data.projectFile}}</i></a> 
+        <div *ngIf="projectFile && projectFile.length > 0"><i class="fas fa-file-pdf"></i>
+            <p><strong>File Names:</strong></p>
+            <ul>
+              <li *ngFor="let fileName of projectFile">{{ fileName }}</li>
+            </ul> -->
+<!-- Add more relevant information as needed -->
+<!-- </div>
+        <button (click)="uploadDocuments()" nbButton shape="semi-round" status="primary" nbButton smallWidth>  <i class="fas fa-file-pdf"> uploadFile</i>
+          
         
-        </button>
-    <!-- </ng-container> -->
-    <ng-template #noFileContent>
-        <span>No file available</span>
-</ng-template> 
-<!-- </div>  -->
+        </button>  -->
+
+<!-- <ng-template    #noFileContent>
+        <span style="color: red;">No file available</span>
+</ng-template>  
+</div> -->
+<div [ngClass]="{ 'no-file-row': !projectFile }">
+  <!-- Display the file names -->
+  <!-- <div *ngIf="projectFile && projectFile.length > 0"> -->
+    <p>
+       <a nbButton shape="semi-round" status="warming" 
+       (click)="open()" > documents
+       <i class="fas fa-file-pdf" style="color: red" ></i>
+      </a>
+    </p>
+   
+   <!-- </div> -->
+ 
+  <!-- Display a message if no files are available -->
+  <ng-template #noFileContent>
+     <span style="color: red">No file available</span>
+  </ng-template>
+ 
+  <!-- Button for uploading files -->
+  <button (click)="uploadDocuments()" nbButton shape="semi-round" status="primary" smallWidth>
+     <i class="fas fa-file-pdf"></i> Upload File
+  </button>
+ <!-- </div> -->

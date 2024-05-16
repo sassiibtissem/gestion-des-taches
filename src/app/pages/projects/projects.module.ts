@@ -13,8 +13,9 @@ import { ProjectsRoutingModule } from './projects-routing.module';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectService } from '../../@core/mock/project.service';
 import { UploadFileComponent } from './upload-file/upload-file.component';
-import { DocumentsComponent } from './documents/documents.component';
+
 import { UploadFormComponent } from './upload-form/upload-form.component';
+import { ListFilesComponent } from './list-files/list-files.component';
 
 
 
@@ -26,8 +27,9 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
     ProjectComponent,
     AddProjectComponent,
     UploadFileComponent,
-    DocumentsComponent,
+  
     UploadFormComponent,
+    ListFilesComponent,
    
    
   ],
@@ -45,7 +47,9 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
     ProjectsRoutingModule,
     NbButtonModule,
     NbLayoutModule,NbSelectModule,
-    NbDatepickerModule
+    NbDatepickerModule,
+   
+    
    
   
     

@@ -15,7 +15,12 @@
                     style="margin-bottom: 20px;">
                     <input class="input" type="text" formControlName="keyWords" nbInput fullWidth placeholder="key words"
                     style="margin-bottom: 20px;">
-
+                    <nb-select  formControlName="projectId" fullWidth placeholder="project_name"
+                    style="margin-bottom: 20px;" >
+          
+                    <nb-option  *ngFor="let p of project" [value]="p._id">{{p.projectName}}</nb-option>
+          
+                  </nb-select>
                 <input class="input" multiple (change)="onFilechange($event)" formControlName="file" type="file" style="margin-bottom: 20px;"
                     nbInput fullWidth>
 

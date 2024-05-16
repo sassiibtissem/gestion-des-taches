@@ -1,0 +1,41 @@
+<nb-card>
+  <nb-card-header> </nb-card-header>
+  <nb-card-body *ngIf="projectFile.length > 0; else noFilesMessage">
+    <table class="table table-bordered" style="width: 100%">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>file Name</th>
+          <th>Date</th>
+          <th>objects</th>
+          <th>key words</th>
+        </tr>
+      </thead>
+
+      <tr *ngFor="let file of projectFile" >
+    
+        <td>
+          <i class="fas fa-file-pdf" style="color: red"></i>
+          <a
+            href="http://localhost:3000/docs/{{ file.fileName }}.pdf"
+            target="_blank"
+          >
+            {{ file.fileName }}.pdf
+          </a>
+        </td>
+        <td>{{ file.date }}</td>
+        <td>{{ file.object }}</td>
+        <td>{{ file.keyWords }}</td>
+      </tr>
+    </table>
+  </nb-card-body>
+  <ng-template #noFilesMessage>
+    <div class="text-center"style="color: red; font-weight: bold;">No files available</div>
+  </ng-template>
+</nb-card>
+
+<!--
+    <i class="fas fa-file-pdf" style="color: red"></i>
+    <a href="http://localhost:3000/docs/{{ fileName }}.pdf" target="_blank">
+      {{ fileName }}.pdf
+    </a>
+ </div> -->

@@ -44,6 +44,7 @@ import { TasksModule } from './pages/tasks/tasks.module';
     NbToastrModule.forRoot(),
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+      
     }),
     GraphQLModule,
     CoreModule.forRoot(),

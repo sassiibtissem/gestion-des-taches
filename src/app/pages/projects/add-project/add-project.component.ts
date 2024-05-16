@@ -71,7 +71,7 @@ export class AddProjectComponent {
   createProject() {
     this.apollo
       .mutate<any>({
-        mutation: this.projectService.createProject(this.newProjectForm.value,this.urlFile),
+        mutation: this.projectService.createProject(this.newProjectForm.value),
         // call mutate function
       })
       .subscribe(() => {

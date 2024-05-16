@@ -61,7 +61,11 @@ loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)
       path: 'listToDo',
       loadChildren: () => import('./tasks/tasks.module')
         .then(m => m.TasksModule),
-    },
+    },{
+    path: 'toDo',
+    loadChildren: () => import('./tasks/tasks.module')
+      .then(m => m.TasksModule)},
+  
     {
       path: 'modal-overlays',
       loadChildren: () => import('./modal-overlays/modal-overlays.module')
